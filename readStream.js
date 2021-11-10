@@ -38,9 +38,19 @@ const readStream = (stream) => {
 	
 				});
 
+				fromStream.on('error', (error) => {
+				
+					console.error(`Error! Something has happened with input stream`);
+				
+					process.exit(1);
+  				
+  				});
+
+  		return fromStream;
+
 		} else {
 
-			console.log('Error in readStream');
+			console.log(`File ${stream} does not exist or does not has right permissions`);
 
 			process.exit(1);
 		}
