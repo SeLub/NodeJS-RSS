@@ -24,7 +24,7 @@ const readStream = (stream) => {
 
 				fromStream.on('error', (error) => {
 				
-					console.error(`Error! Something has happened with input stream`);
+					console.error(`Error in readStream`);
 				
 					process.exit(1);
   				
