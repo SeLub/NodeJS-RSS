@@ -38,6 +38,4 @@ const writeStream = (stream) => {
 
 };
 
-writeStream('myfile.encrypted');
-
 module.exports = { writeStream };
