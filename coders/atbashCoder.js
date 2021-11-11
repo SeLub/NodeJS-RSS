@@ -1,33 +1,22 @@
-const atbashCoder = (char) => {    
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+const reverseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].reverse()
+const ALPHABET = alphabet.map(el => el = el.toUpperCase());
+const reverseALPHABET = reverseAlphabet.map(el => el = el.toUpperCase());
+console.log(ALPHABET, reverseALPHABET)
 
-    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var tebahpla = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
-    var alphabet1 = "abcdefghijklmnopqrstuvwxyz";
-    var tebahpla1 = "zyxwvutsrqponmlkjihgfedcba";
-    var decoded_string = "";
+const atbashCoder = (char) => {
+      
+      if (/[a-z]/.test(char)) {
+        const index = alphabet.findIndex(letter => letter === char)
+        return reverseAlphabet[index]
+        };
 
-    for (var i = 0; i < char.length; i++) {
-        var coded_letra = char.charAt(i);
-        
-	if (/[^a-zA-Z]/.test(char[i])) {
-		decoded_string = decoded_string+char[i];	
-	}
-	else if (char[i] === char[i].toUpperCase()) {
-	    	var letraPosMayus = alphabet.indexOf(coded_letra);
-	    	var tebLetraPosMayus = tebahpla.charAt(letraPosMayus);
-	    	decoded_string = decoded_string+tebLetraPosMayus;
-        } else {
-	    	var letraPosMinus1 = alphabet1.indexOf(coded_letra);
-	    	var tebLetraPosMinus1 = tebahpla1.charAt(letraPosMinus1);
-	    	decoded_string = decoded_string + tebLetraPosMinus1;
-        }
-
-    }
-    return decoded_string;
-}
+      if (/[A-Z]/.test(char)) {
+        const index = ALPHABET.findIndex(letter => letter === char)
+        return reverseALPHABET[index]
+        };
+};
 
 module.exports = {
 	atbashCoder
 };
-
-console.log(atbashCoder('A'));
