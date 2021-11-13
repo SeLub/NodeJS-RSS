@@ -21,8 +21,6 @@ const ceaserCoder = (char, key, type = true) => {
       return char;
 };
 
-console.log(ceaserCoder('i',8,false))
-
 module.exports = {
 	ceaserCoder
 };

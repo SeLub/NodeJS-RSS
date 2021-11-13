@@ -9,7 +9,7 @@ const rot8Coder = (char, key = 8, type = true) =>      {
         return String.fromCharCode(k + ((c == 0) ? 64 : 96));
      }
 
-console.log(rot8Coder('I',8,false))
+console.log(rot8Coder('B',1,false))
 
 module.exports = {
 
