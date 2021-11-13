@@ -1,12 +1,21 @@
 const { Transform } = require('stream');
-let { ceaserCoder } = require('./coders.js')
+let { ceaserCoder } = require('../coders/ceasarCoder')
 
 
-const transtream = new Transform({
+const transformCeasarStreamEncoding = new Transform({
     transform(chunk, encoding, callback){
-        this.push(ceaserCoder(chunk.toString(), 1));
+        this.push(ceaserCoder(chunk.toString(), 1, true));
         callback()
     }
 });
 
-process.stdin.pipe(transtream).pipe(process.stdout);
+const transformCeasarStreamDecoding = new Transform({
+    transform(chunk, encoding, callback){
+        this.push(ceaserCoder(chunk.toString(), 1, false));
+        callback()
+    }
+});
+
+const
+
+process.stdin.pipe(transformCeasarStreamEncoding).pipe(transformCeasarStreamDecoding).pipe(process.stdout);
