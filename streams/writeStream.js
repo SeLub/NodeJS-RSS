@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const { checkFileExists } = require('./fileExists');
+const { checkFileExists } = require('../lib/fileExists');
 
 const writeStream = (stream) => {
 
