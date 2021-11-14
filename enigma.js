@@ -43,11 +43,11 @@ if (validateArgs(argsArr)) {
 			let cipherCode = el.slice(0, 1);
 			let cipherMethod = el.slice(1, 2);
 	
-			if (cipherCode === 'C' && cipherMethod == 1) transformArray.push(transformCeasarStreamEncoding);
-			else if (cipherCode === 'C' && cipherMethod == 0) transformArray.push(transformCeasarStreamDecoding);
-			else if (cipherCode === 'R' && cipherMethod == 1) transformArray.push(transformROI8StreamEncoding);
-			else if (cipherCode === 'R' && cipherMethod == 0) transformArray.push(transformROI8StreamDecoding);
-			else if (cipherCode === 'A') transformArray.push(transformAtbashStream);
+			if (cipherCode === 'C' && cipherMethod == 1) transformArray.push(transformCeasarStreamEncoding());
+			else if (cipherCode === 'C' && cipherMethod == 0) transformArray.push(transformCeasarStreamDecoding());
+			else if (cipherCode === 'R' && cipherMethod == 1) transformArray.push(transformROI8StreamEncoding());
+			else if (cipherCode === 'R' && cipherMethod == 0) transformArray.push(transformROI8StreamDecoding());
+			else if (cipherCode === 'A') transformArray.push(transformAtbashStream());
 			else { console.log('Wrong chiper code')}
 	
 		});

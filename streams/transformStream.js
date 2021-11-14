@@ -3,40 +3,56 @@ let { ceaserCoder } = require('../coders/ceasarCoder');
 let { atbashCoder } = require('../coders/atbashCoder');
 
 
-const transformCeasarStreamEncoding = new Transform({
+
+let logger = function () {
+    return new stream.Transform({
+        transform: function (chunk, encoding, next) {
+            console.log(`Chunk: ${chunk}`);
+            this.push(chunk);
+            next();
+        }
+    });
+}
+
+let transformCeasarStreamEncoding = function () {
+    return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 1, true));
         callback()
     }
-});
+})};
 
-const transformCeasarStreamDecoding = new Transform({
+let transformCeasarStreamDecoding = function () {
+    return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 1, false));
         callback()
     }
-});
+})};
 
-const transformROI8StreamEncoding = new Transform({
+let transformROI8StreamEncoding = function () {
+    return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 8, true));
         callback()
     }
-});
+})};
 
-const transformROI8StreamDecoding = new Transform({
+let transformROI8StreamDecoding = function () {
+    return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 8, false));
         callback()
     }
-});
+})};
 
-const transformAtbashStream = new Transform({
+let transformAtbashStream = function () {
+    return new Transform({
     transform(chunk, encoding, callback){
         this.push(atbashCoder(chunk.toString()));
         callback()
     }
-});
+})};
 
 module.exports = {
 
