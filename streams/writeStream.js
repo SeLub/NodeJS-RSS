@@ -24,6 +24,9 @@ const writeStream = (stream) => {
 		console.log(`\n---------------------------------------------------------------`);		
 		console.log(`\n    Output stream set to 'process.stdout'`);
 		console.log(`\n---------------------------------------------------------------`);
+
+		return toStream;
+
 	} else {
 
 		if (checkFileExists(stream, fs.constants.F_OK | fs.constants.W_OK)) {

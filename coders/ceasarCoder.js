@@ -2,7 +2,23 @@
 const codeOfa = 'a'.charCodeAt(0);
 const codeOfA = 'A'.charCodeAt(0);
 
-const ceaserCoder = (char, key, type = true) => {
+
+const ceaserCoder = (stringToCode, key, type = true) => {
+
+  let resault_string = '';
+
+for (let character of stringToCode ) {
+
+  resault_string += encoderCeasar(character, key, type); 
+  
+};
+
+return resault_string;
+
+};
+
+
+const encoderCeasar = (char, key, type = true) => {
 
       if (/[a-z]/.test(char)) {
 

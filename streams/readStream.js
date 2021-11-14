@@ -25,6 +25,8 @@ const readStream = (stream) => {
 		console.log(`\n    Input stream set to 'process.stdin'`);
 		console.log(`\n---------------------------------------------------------------'`);
 
+		return fromStream;
+
 	} else {
 
 		if (checkFileExists(stream, fs.constants.F_OK | fs.constants.R_OK)) {

@@ -1,5 +1,6 @@
 const { Transform } = require('stream');
-let { ceaserCoder } = require('../coders/ceasarCoder')
+let { ceaserCoder } = require('../coders/ceasarCoder');
+let { atbashCoder } = require('../coders/atbashCoder');
 
 
 const transformCeasarStreamEncoding = new Transform({
@@ -16,6 +17,32 @@ const transformCeasarStreamDecoding = new Transform({
     }
 });
 
-const
+const transformROI8StreamEncoding = new Transform({
+    transform(chunk, encoding, callback){
+        this.push(ceaserCoder(chunk.toString(), 8, true));
+        callback()
+    }
+});
 
-process.stdin.pipe(transformCeasarStreamEncoding).pipe(transformCeasarStreamDecoding).pipe(process.stdout);
+const transformROI8StreamDecoding = new Transform({
+    transform(chunk, encoding, callback){
+        this.push(ceaserCoder(chunk.toString(), 8, false));
+        callback()
+    }
+});
+
+const transformAtbashStream = new Transform({
+    transform(chunk, encoding, callback){
+        this.push(atbashCoder(chunk.toString()));
+        callback()
+    }
+});
+
+module.exports = {
+
+	transformCeasarStreamEncoding,
+	transformCeasarStreamDecoding,
+	transformROI8StreamEncoding,
+	transformROI8StreamDecoding,
+	transformAtbashStream
+};
