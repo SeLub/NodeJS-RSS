@@ -5,7 +5,7 @@ const { checkFileExists } = require('../lib/fileExists');
 class ValidationError extends Error {
   constructor(message) {
     super(message);
-    this.name = "ValidationError:";
+    this.name = "\n    ValidationError:";
   }
 };
 
@@ -16,14 +16,16 @@ const pushError = (message) => {
 
 const readStream = (stream) => {
 
+try {
+
 	let fromStream = '';
 
 	if (stream === undefined) {
 
 		fromStream = process.stdin;
-		console.log(`\n---------------------------------------------------------------'`);
-		console.log(`\n    Input stream set to 'process.stdin'`);
-		console.log(`\n---------------------------------------------------------------'`);
+		console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
+		console.log('\x1b[32m', `\n                 Input stream set to 'process.stdin'`);
+		console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
 
 		return fromStream;
 
@@ -39,15 +41,19 @@ const readStream = (stream) => {
 			
 			});
 
-			console.log(`\n---------------------------------------------------------------'`);
-			console.log(`\n    Input stream set to ${stream}`);
-			console.log(`\n---------------------------------------------------------------'`);
+			console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
+			console.log('\x1b[32m', `\n                 Input stream set to ${stream}`);
+			console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
 
 				fromStream.on('error', (error) => {
+
+					fromStream.destroy();
+
+					let message = `\nError in readStream.`;
+
+					pushError(message);
 				
-					console.error(`Error in readStream`);
-				
-					process.exit(1);
+					process.exit(9);
   				
   				});
 
@@ -56,14 +62,24 @@ const readStream = (stream) => {
 		} else {
 
 			let message = `\n    ---------------------------------------------------------------` +
-			 `\n    File ${stream} does not exist or does not has right permissions`+
+			`\n    File ${stream} does not exist or does not has right permissions` +
 			`\n    ---------------------------------------------------------------`;
+			pushError(`    Error to start program :${message}`);
 
-			pushError(`\n  Error to start program :${message}`);
-
-			process.exit(1);
 		}
 	}
+
+} catch(err) {
+
+    	console.log(err.name);
+    	
+    	console.log(err.message);
+
+    	process.exit(1);
+
+    	return false;
+
+	};
 
 };
 

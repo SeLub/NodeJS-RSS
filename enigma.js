@@ -21,6 +21,14 @@ const {
 } = require('./streams/transformStream');
 
 let argsArr = process.argv.slice(2);
+	let message1 = '\n      Ceasar Cipher, ROI-8 Ciper and Atbash Cipher Encoder/Decoder\n';
+	let message2 = '\n      The program tested under node v16 and may does not work \n      properly with another node versions.               ';
+	let message3 = `\n                    Your use node version - ${process.versions.node}`;
+	let line =     `\n    ---------------------------------------------------------------`;
+	let program_name = `\n                             ENIGMA Cipher Program                 `;
+
+	console.log('\x1b[33m%s\x1b[0m', line + program_name + message1 + message2 + message3 + line);
+
 
 if (validateArgs(argsArr)) {
 
@@ -54,6 +62,8 @@ if (validateArgs(argsArr)) {
 		transformArray.unshift(inputStream);
 		transformArray.push(outputStream);
 //console.log ('transformArray =', transformArray);
+
+console.log('\x1b[37m','    Coding/Decoding...')
 
 pipeline(transformArray,
   (err) => {
