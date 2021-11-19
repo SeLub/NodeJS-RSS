@@ -1,18 +1,6 @@
 const fs = require('fs');
-
 const { checkFileExists } = require('../lib/fileExists');
-
-class ValidationError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "\n    ValidationError:";
-  }
-};
-
-const pushError = (message) => {
-  throw new ValidationError(message);
-  process.exit(1);
-};
+const { ValidationError, pushError, exitError } = require('./errors');
 
 const readStream = (stream) => {
 
@@ -23,6 +11,7 @@ try {
 	if (stream === undefined) {
 
 		fromStream = process.stdin;
+		
 		console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
 		console.log('\x1b[32m', `\n                 Input stream set to 'process.stdin'`);
 		console.log('\x1b[32m', `\n    ---------------------------------------------------------------`);
@@ -69,13 +58,9 @@ try {
 		}
 	}
 
-} catch(err) {
+} catch(error) {
 
-    	console.log(err.name);
-    	
-    	console.log(err.message);
-
-    	process.exit(1);
+		exitError(error)
 
     	return false;
 
