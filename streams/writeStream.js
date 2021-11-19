@@ -1,18 +1,6 @@
 const fs = require('fs');
-
 const { checkFileExists } = require('../lib/fileExists');
-
-class ValidationError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "\n    ValidationError:";
-  }
-};
-
-const pushError = (message) => {
-  throw new ValidationError(message);
-  process.exit(1);
-};
+const { ValidationError, pushError, exitError } = require('../lib/errors');
 
 const writeStream = (stream) => {
 
@@ -23,6 +11,7 @@ try {
 	if (stream === undefined) {
 
 		toStream = process.stdout;
+
 		console.log('\x1b[36m', `\n    ---------------------------------------------------------------`);		
 		console.log(`\n                 Output stream set to 'process.stdout'`);
 		console.log(`\n    ---------------------------------------------------------------`);
@@ -39,12 +28,13 @@ try {
 			console.log(`\n                 Output stream set to ${stream}`);
 			console.log(`\n    ---------------------------------------------------------------'`);
 
-
 				toStream.on('error', (error) => {
-				
-					console.error(`Error in writeStream!`);
-				
-					process.exit(1);
+
+					toStream.destroy();
+
+					let message = `\n    Error in writeStream.`;
+
+					pushError(message);
   				
   				});
 
@@ -58,18 +48,12 @@ try {
 
 			pushError(`    Error to start program :${message}`);
 
-			process.exit(1);
-
 		}
 	}
 
-} catch(err) {
-    	
-    	console.log(err.name);
-    	
-    	console.log(err.message);
+} catch(error) {
 
-    	process.exit(1);
+		exitError(error)
 
     	return false;
 

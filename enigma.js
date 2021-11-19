@@ -25,7 +25,7 @@ let argsArr = process.argv.slice(2);
 	let message2 = '\n      The program tested under node v16 and may does not work \n      properly with another node versions.               ';
 	let message3 = `\n                    Your use node version - ${process.versions.node}`;
 	let line =     `\n    ---------------------------------------------------------------`;
-	let program_name = `\n                             ENIGMA Cipher Program                 `;
+	let program_name = `\n            ENIGMA Cipher Program v 2.0 Nov.2021                     `;
 
 	console.log('\x1b[33m%s\x1b[0m', line + program_name + message1 + message2 + message3 + line);
 
@@ -61,9 +61,16 @@ if (validateArgs(argsArr)) {
 		});
 		transformArray.unshift(inputStream);
 		transformArray.push(outputStream);
-//console.log ('transformArray =', transformArray);
 
-console.log('\x1b[37m','    Coding/Decoding...')
+
+let writeMessage = ''
+if (inputFileName === undefined && outputFileName === undefined  ) { writeMessage = '    Please write text for Coding/Decoding...\n' }
+else if(inputFileName !== undefined && outputFileName !== undefined) { writeMessage = `    Coding/Decoding for text from ${inputFileName} is completed. Resault in ${outputFileName}`}
+	else if(inputFileName !== undefined && outputFileName === undefined) { writeMessage = `    Coding/Decoding for text from ${inputFileName} is completed. Resault:\n`}
+		else if (inputFileName === undefined && outputFileName !== undefined ) {writeMessage = `    Please write text for Coding/Decoding. Resault in ${outputFileName}\n` }
+
+console.log('\x1b[33m%s\x1b[0m', `    You use cipher code:`,`\x1b[32m`,` ${getCipherCode(argsArr)}`);
+console.log('\x1b[33m%s\x1b[0m', writeMessage, '\x1b[0m');
 
 pipeline(transformArray,
   (err) => {
