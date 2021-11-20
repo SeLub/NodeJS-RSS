@@ -29,8 +29,9 @@ let argsArr = process.argv.slice(2);
 
 	console.log('\x1b[33m%s\x1b[0m', line + program_name + message1 + message2 + message3 + line);
 
-
 if (validateArgs(argsArr)) {
+
+	console.log(argsArr)
 
 	let inputFileName = getInputFilename(argsArr);
 

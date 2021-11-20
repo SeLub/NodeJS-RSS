@@ -1,0 +1,31 @@
+{
+  "name": "enigma",
+  "version": "2.0.0",
+  "description": "Ciphering CLI Tool",
+  "main": "enigma.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeLub/NodeJS-RSS.git"
+  },
+  "keywords": [
+    "cli",
+    "js"
+  ],
+  "author": "Sergey Lubimov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeLub/NodeJS-RSS/issues"
+  },
+  "homepage": "https://github.com/SeLub/NodeJS-RSS#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "jest": "^27.3.1"
+  }
+}
