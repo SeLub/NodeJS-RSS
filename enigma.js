@@ -20,7 +20,7 @@ const {
 
 } = require('./streams/transformStream');
 
-const { pushError}  = require('./lib/errors'); 
+const { pushError, exitError}  = require('./lib/errors'); 
 
 try {
 
@@ -88,6 +88,6 @@ pipeline(transformArray,
 
 } catch(error){
 
-        pushError(error);
+        exitError(error);
  
 }

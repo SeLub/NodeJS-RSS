@@ -30,7 +30,7 @@ const writeStream = (stream) => {
 
 			let message = `\n    ---------------------------------------------------------------` +
 			`\n    File ${stream} does not exist or does not has right permissions` +
-			`\n    ---------------------------------------------------------------`;
+			`\n    ---------------------------------------------------------------\n`;
 
 			pushError(`    Error to start program :${message}`);
 
