@@ -2,11 +2,11 @@
 
 Task [description here](https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/testing.md)
 
-Task due date / deadline date - 14.11.21 / 14.11.21 23:59(GMT+3)
+Task due date / deadline date - 21.11.21 / 21.11.21 23:59(GMT+3)
 
 Self check:
  
- TOTAL POINTS - _** 190 points**_
+ TOTAL POINTS - _** 100 points**_
  
 -----------
 ## __Evaluation criteria__
@@ -19,6 +19,13 @@ Self check:
 2. Покрытие не менее 70% **плюс 20 баллов** (покрытие по **строкам**, вычисляется при помощи `jest --coverage`)
 3. В тестах задействованы все сценарии из описания **плюс 20 баллов**
 4. Для тестирования используются mock-объекты **плюс 20 баллов**
+
+Evaluation criteria   | Description | URL 
+----------------------|-------------|-----
+1 | По **плюс 2 балла** за каждый юнит-тест (не более **20 баллов** в сумме, баллы начисляются не более чем за 3 теста на каждую отдельную функцию/компонент). | https://github.com/SeLub/shop-aws-be/tree/task-9/bff-service
+2 | Покрытие не менее 70% **плюс 20 баллов** (покрытие по **строкам**, вычисляется при помощи `jest --coverage`) | https://yjktumlqrl.execute-api.eu-central-1.amazonaws.com/dev/products
+3 | В тестах задействованы все сценарии из описания **плюс 20 баллов** | http://selub-bff-api-env.eu-central-1.elasticbeanstalk.com/product
+4 | Для тестирования используются mock-объекты **плюс 20 баллов** | https://yjktumlqrl.execute-api.eu-central-1.amazonaws.com/dev/products/89da7309-e5ed-48a4-b4e6-ae47c947ae12
 
 ## Продвинутая реализация
 
@@ -35,6 +42,19 @@ Self check:
 ------------
 
 # __Summary Report__
+
+Evaluation criteria   | Description | URL 
+----------------------|-------------|-----
+Cr.1 | По **плюс 2 балла** за каждый юнит-тест (не более **20 баллов** в сумме, баллы начисляются не более чем за 3 теста на каждую отдельную функцию/компонент). | https://github.com/SeLub/shop-aws-be/tree/task-9/bff-service
+Cr.1 | Покрытие не менее 70% **плюс 20 баллов** (покрытие по **строкам**, вычисляется при помощи `jest --coverage`) | https://yjktumlqrl.execute-api.eu-central-1.amazonaws.com/dev/products
+Cr.2 | В тестах задействованы все сценарии из описания **плюс 20 баллов** | http://selub-bff-api-env.eu-central-1.elasticbeanstalk.com/product
+Cr.1 | Для тестирования используются mock-объекты **плюс 20 баллов** | https://yjktumlqrl.execute-api.eu-central-1.amazonaws.com/dev/products/89da7309-e5ed-48a4-b4e6-ae47c947ae12
+Cr.1 | bff-service service API: PRODUCT by ID (GET) | http://selub-bff-api-env.eu-central-1.elasticbeanstalk.com/product/?id=89da7309-e5ed-48a4-b4e6-ae47c947ae12
+Cr.1 | Product-service service API: CREATE PRODUCT (POST) | https://yjktumlqrl.execute-api.eu-central-1.amazonaws.com/dev/products
+Cr.1 | bff-service service API:: CREATE PRODUCT (POST) |  http://selub-bff-api-env.eu-central-1.elasticbeanstalk.com/product
+Cr.1 | Cart-service service API: Products in Cart (GET) | http://selub-cart-api.eu-central-1.elasticbeanstalk.com/api/profile/cart
+Cr.2 | bff-service service API Products in Cart (GET) | http://selub-bff-api-env.eu-central-1.elasticbeanstalk.com/cart
+Ad.3 | How to check cache work - read below. I use module **node-cache**| https://github.com/SeLub/shop-aws-be/blob/task-9/bff-service/routes/index.js
 
 .....
 
