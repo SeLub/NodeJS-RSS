@@ -67,3 +67,11 @@ __ !!!! Для запуска тестов используйте команду
 #### **Тесты Jest** -  показатели по тестированию
 
 ![Get Product by ID](tests.png)
+
+#### **validateArgs** -  результат работы тестов, в которых задействованы сценарии из задания
+
+![validateArgs](validateArgs.png)
+
+#### **parseConfig.png** -  результат тестирования функции парсинга шифра
+
+![parseConfig.png](parseConfig.png)
