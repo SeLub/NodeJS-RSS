@@ -1,8 +1,4 @@
 
-const codeOfa = 'a'.charCodeAt(0);
-const codeOfA = 'A'.charCodeAt(0);
-
-
 const ceaserCoder = (stringToCode, key, type = true) => {
 
   let resault_string = '';
@@ -19,6 +15,10 @@ return resault_string;
 
 
 const encoderCeasar = (char, key, type = true) => {
+
+      const codeOfa = 'a'.charCodeAt(0);
+
+      const codeOfA = 'A'.charCodeAt(0);
 
       if (/[a-z]/.test(char)) {
 
@@ -37,6 +37,4 @@ const encoderCeasar = (char, key, type = true) => {
       return char;
 };
 
-module.exports = {
-	ceaserCoder
-};
+module.exports = { ceaserCoder };
