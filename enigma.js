@@ -20,6 +20,10 @@ const {
 
 } = require('./streams/transformStream');
 
+const { pushError}  = require('./lib/errors'); 
+
+try {
+
 let argsArr = process.argv.slice(2);
 	let message1 = '\n      Ceasar Cipher, ROI-8 Ciper and Atbash Cipher Encoder/Decoder\n';
 	let message2 = '\n      The program tested under node v16 and may does not work \n      properly with another node versions.               ';
@@ -30,8 +34,6 @@ let argsArr = process.argv.slice(2);
 	console.log('\x1b[33m%s\x1b[0m', line + program_name + message1 + message2 + message3 + line);
 
 if (validateArgs(argsArr)) {
-
-	console.log(argsArr)
 
 	let inputFileName = getInputFilename(argsArr);
 
@@ -82,4 +84,10 @@ pipeline(transformArray,
   }
 );
 
-	};
+};
+
+} catch(error){
+
+        pushError(error);
+ 
+}
