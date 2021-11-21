@@ -1,10 +1,8 @@
 const fs = require('fs');
-const { checkFileExists } = require('../lib/fileExists');
-const { ValidationError, pushError, exitError } = require('../lib/errors');
+const { checkFileExists } = require('../lib/checkFileExists');
+const { pushError} = require('../lib/errors');
 
 const readStream = (stream) => {
-
-try {
 
 	let fromStream = '';
 
@@ -18,9 +16,7 @@ try {
 
 		return fromStream;
 
-	} else {
-
-		if (checkFileExists(stream, fs.constants.F_OK | fs.constants.R_OK)) {
+	} else if (checkFileExists(stream, fs.constants.F_OK | fs.constants.R_OK)) {
 
 			let fromStream = fs.createReadStream(stream, { encoding: 'utf8', fd: null });
 
@@ -28,15 +24,6 @@ try {
 			console.log(`\n                 Input stream set to ${stream}`);
 			console.log(`\n    ---------------------------------------------------------------`);
 
-				fromStream.on('error', (error) => {
-
-					fromStream.destroy();
-
-					let message = `\n    Error in readStream.`;
-
-					pushError(message);
-				
-  				});
 
   		return fromStream;
 
@@ -49,15 +36,6 @@ try {
 			pushError(`    Error to start program :${message}`);
 
 		}
-	}
-
-} catch(error) {
-
-		exitError(error)
-
-    	return false;
-
-	};
 
 };
 
