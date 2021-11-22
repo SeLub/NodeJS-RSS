@@ -1,20 +1,8 @@
 const { Transform } = require('stream');
-let { ceaserCoder } = require('../coders/ceasarCoder');
-let { atbashCoder } = require('../coders/atbashCoder');
+const { ceaserCoder } = require('../coders/ceasarCoder');
+const { atbashCoder } = require('../coders/atbashCoder');
 
-
-
-let logger = function () {
-    return new stream.Transform({
-        transform: function (chunk, encoding, next) {
-            console.log(`Chunk: ${chunk}`);
-            this.push(chunk);
-            next();
-        }
-    });
-}
-
-let transformCeasarStreamEncoding = function () {
+exports.transformCeasarStreamEncoding = function () {
     return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 1, true));
@@ -22,7 +10,7 @@ let transformCeasarStreamEncoding = function () {
     }
 })};
 
-let transformCeasarStreamDecoding = function () {
+exports.transformCeasarStreamDecoding = function () {
     return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 1, false));
@@ -30,7 +18,7 @@ let transformCeasarStreamDecoding = function () {
     }
 })};
 
-let transformROI8StreamEncoding = function () {
+exports.transformROI8StreamEncoding = function () {
     return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 8, true));
@@ -38,7 +26,7 @@ let transformROI8StreamEncoding = function () {
     }
 })};
 
-let transformROI8StreamDecoding = function () {
+exports.transformROI8StreamDecoding = function () {
     return new Transform({
     transform(chunk, encoding, callback){
         this.push(ceaserCoder(chunk.toString(), 8, false));
@@ -46,19 +34,10 @@ let transformROI8StreamDecoding = function () {
     }
 })};
 
-let transformAtbashStream = function () {
+exports.transformAtbashStream = function () {
     return new Transform({
     transform(chunk, encoding, callback){
         this.push(atbashCoder(chunk.toString()));
         callback()
     }
 })};
-
-module.exports = {
-
-	transformCeasarStreamEncoding,
-	transformCeasarStreamDecoding,
-	transformROI8StreamEncoding,
-	transformROI8StreamDecoding,
-	transformAtbashStream
-};
