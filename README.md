@@ -6,4 +6,4 @@ List of Tasks [here](https://github.com/rolling-scopes-school/basic-nodejs-cours
 Status | Task | Url
 -----|-----|--------
 Done | Task-1 Ciphering CLI Tool | https://github.com/SeLub/NodeJS-RSS/tree/task-1
-InProgress | Task-2 Ciphering CLI Tool | https://github.com/SeLub/NodeJS-RSS/tree/task-2
+Done | Task-2 Ciphering CLI Tool | https://github.com/SeLub/NodeJS-RSS/tree/task-2
